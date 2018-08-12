@@ -85,10 +85,12 @@ const processOrder = (input) => {
                     let totalCost = parseFloat(data[0].price) * quantity;
                     totalCost = totalCost.toFixed(2);
                     console.log(`Total Order Cost: \$${totalCost}`);
+                    console.log(divider);
                 });
         }
         else {
             console.log("Insufficient stock!");
+            console.log(divider);
         }
         connection.end();
     });
@@ -96,11 +98,8 @@ const processOrder = (input) => {
 
 connection.connect(error => {
     if (error) throw error;
-
-    // console.log(`connected as id: ${connection.threadId}`);
     showWelcome();
     showProducts();
-
     // connection.end();
 });
 
