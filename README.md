@@ -1,7 +1,7 @@
 # Bamazon!
 Shop storefront built on Node.js + MySQL
 
-For user workflow, screenshots and app functionality, please see document:  **Bamazon - Workflow.pdf**
+For user workflow, screenshots and app functionality, please see document:  [**Bamazon - Workflow.pdf**](https://github.com/b4ruch/bamazon/blob/master/Bamazon%20-%20Workflow.pdf)
 
 Below are the main functionalities of Bamazon app.
 
