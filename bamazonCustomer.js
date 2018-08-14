@@ -61,28 +61,30 @@ const showMenu = () => {
 
 const processOrder = (input) => {
 
-    let query = `SELECT stock_quantity, price FROM products WHERE item_id = ?`;
+    let query = `SELECT stock_quantity, price, product_sales FROM products WHERE item_id = ?`;
     connection.query(query, [input.id], (err, data) => {
-        // connection.query(query, (err, data) => {
         if (err) throw err;
         let stock = parseInt(data[0].stock_quantity);
         let quantity = parseInt(input.quantity);
         let success = stock >= quantity;
         if (success) {
             console.log("Order Approved");
-            query = "UPDATE products SET ? WHERE ?";
+            let productSales = parseFloat(data[0].product_sales);
+            let totalCost = parseFloat(data[0].price) * quantity;
+            query = "UPDATE products SET ?,? WHERE ?";
             connection.query(query,
                 [
                     {
                         stock_quantity: stock - quantity
                     },
                     {
+                        product_sales: productSales ? productSales + totalCost : totalCost
+                    },
+                    {
                         item_id: input.id
                     }
                 ], (err, newData) => {
                     if (err) throw err;
-                    // console.log(`${newData.affectedRows} product updated!`);
-                    let totalCost = parseFloat(data[0].price) * quantity;
                     totalCost = totalCost.toFixed(2);
                     console.log(`Total Order Cost: \$${totalCost}`);
                     console.log(divider);

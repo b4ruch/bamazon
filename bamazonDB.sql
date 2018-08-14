@@ -18,6 +18,7 @@ CREATE TABLE products(
     department_name VARCHAR (50),
     price FLOAT (8,3),
     stock_quantity INT,
+    product_sales FLOAT(10,3),
     PRIMARY KEY(item_id)
 );
 
@@ -35,6 +36,14 @@ VALUES ("soap", "body care", 1.5, 100),
     
 SELECT * FROM products;
 -- SELECT stock_quantity FROM products WHERE item_id = 2;
+
+
+CREATE TABLE departments (
+	department_id INT NOT NULL AUTO_INCREMENT,
+    department_name VARCHAR(50),
+    over_head_costs FLOAT(10,3),
+    PRIMARY KEY(department_id)
+);
     
     
 		
